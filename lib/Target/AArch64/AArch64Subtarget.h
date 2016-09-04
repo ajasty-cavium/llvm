@@ -44,7 +44,8 @@ public:
     Cyclone,
     ExynosM1,
     Kryo,
-    Vulcan
+    Vulcan,
+    ThunderX
   };
 
 protected:

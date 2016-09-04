@@ -146,6 +146,7 @@ include "AArch64SchedCyclone.td"
 include "AArch64SchedM1.td"
 include "AArch64SchedKryo.td"
 include "AArch64SchedVulcan.td"
+include "AArch64SchedThunderX.td"
 
 def ProcA35     : SubtargetFeature<"a35", "ARMProcFamily", "CortexA35",
                                    "Cortex-A35 ARM processors", [
@@ -249,6 +250,20 @@ def ProcVulcan  : SubtargetFeature<"vulcan", "ARMProcFamily", "Vulcan",
                                    FeaturePostRAScheduler,
                                    HasV8_1aOps]>;
 
+def ProcThunderX     : SubtargetFeature<"thunderx", "ARMProcFamily", "ThunderX",
+                                   "ThunderX ARM processors", [
+                                   FeatureBalanceFPOps,
+                                   FeatureCRC,
+                                   FeatureCrypto,
+                                   FeatureFPARMv8,
+                                   FeatureMergeNarrowLd,
+                                   FeatureNEON,
+                                   FeaturePerfMon,
+                                   FeaturePostRAScheduler,
+                                   FeatureUseAA,
+				   HasV8_1aOps]>;
+
+
 def : ProcessorModel<"generic", NoSchedModel, [
                      FeatureCRC,
                      FeatureFPARMv8,
@@ -268,6 +283,7 @@ def : ProcessorModel<"cyclone", CycloneModel, [ProcCyclone]>;
 def : ProcessorModel<"exynos-m1", ExynosM1Model, [ProcExynosM1]>;
 def : ProcessorModel<"kryo", KryoModel, [ProcKryo]>;
 def : ProcessorModel<"vulcan", VulcanModel, [ProcVulcan]>;
+def : ProcessorModel<"thunderx", ThunderXModel, [ProcThunderX]>;
 
 //===----------------------------------------------------------------------===//
 // Assembly parser

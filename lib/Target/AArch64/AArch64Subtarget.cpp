@@ -74,6 +74,15 @@ void AArch64Subtarget::initializeProperties() {
     MinPrefetchStride = 1024;
     MaxPrefetchIterationsAhead = 11;
     break;
+  case ThunderX:
+    CacheLineSize = 128;
+    PrefetchDistance = 256;
+    MinPrefetchStride = 8;
+    MaxPrefetchIterationsAhead = 6;
+    PrefFunctionAlignment = 5;
+    PrefLoopAlignment = 5;
+    MergeNarrowLoads = true;
+    break;
   case Vulcan:
     MaxInterleaveFactor = 4;
     break;
